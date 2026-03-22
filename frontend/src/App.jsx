@@ -86,25 +86,24 @@ export default function App() {
     setResult(null);
   };
 
-  const handleReview = async () => {
-    setLoading(true);
-    setError(null);
-    setResult(null);
-    try {
-      const token = localStorage.getItem("token");
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}`,
-        { code, language },
-        { headers: { Authorization: `Bearer ${token}` } }
-
-      );
-      setResult(res.data);
-    } catch (err) {
-      setError("Something went wrong. Is your backend running?");
-    } finally {
-      setLoading(false);
-    }
-  };
+ const handleReview = async () => {
+  setLoading(true);
+  setError(null);
+  setResult(null);
+  try {
+    const token = localStorage.getItem("token");
+    const res = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/review`,
+      { code, language },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    setResult(res.data);
+  } catch (err) {
+    setError("Something went wrong. Is your backend running?");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleCopy = () => {
     navigator.clipboard.writeText(result.improved_code);
