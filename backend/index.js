@@ -7,7 +7,7 @@ const reviewRoute = require("./routes/review");
 const authRoute = require("./routes/auth");
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
   res.send("AI Code Reviewer API is running");
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

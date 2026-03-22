@@ -10,7 +10,7 @@ export default function History({ onSelectReview }) {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/review/history", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/review/history`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setHistory(res.data);
@@ -29,7 +29,7 @@ export default function History({ onSelectReview }) {
     e.stopPropagation();
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/review/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/review/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setHistory(history.filter((r) => r._id !== id));

@@ -93,9 +93,9 @@ export default function App() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:5000/api/review",
+        `${import.meta.env.VITE_API_URL}`,
         { code, language },
-        { headers: { Authorization: `Bearer ${token}` } }
+       `${import.meta.env.VITE_API_URL}/api/review`
       );
       setResult(res.data);
     } catch (err) {
