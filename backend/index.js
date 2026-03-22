@@ -7,7 +7,10 @@ const reviewRoute = require("./routes/review");
 const authRoute = require("./routes/auth");
 
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(cors({
+  origin: ["https://ai-code-reviewer-app.vercel.app", "http://localhost:5173"],
+  credentials: true
+}));
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI)
