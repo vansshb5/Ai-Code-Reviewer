@@ -95,7 +95,8 @@ export default function App() {
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}`,
         { code, language },
-       `${import.meta.env.VITE_API_URL}/api/review`
+        { headers: { Authorization: `Bearer ${token}` } }
+
       );
       setResult(res.data);
     } catch (err) {
