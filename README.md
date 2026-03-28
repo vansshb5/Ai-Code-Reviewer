@@ -128,24 +128,6 @@ ai_reviewer/
 └── README.md
 ```
 
----
-
-## Environment Variables
-
-### Backend
-
-| Variable | Description |
-|---|---|
-| PORT | Server port (default: 5000) |
-| MONGODB_URI | MongoDB connection string |
-| GROQ_API_KEY | Groq API key |
-| JWT_SECRET | JWT secret key |
-
-### Frontend
-
-| Variable     |      Description     |
-|           ---|                   ---|
-| VITE_API_URL | Backend API base URL |
 
 ---
 
