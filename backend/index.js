@@ -26,6 +26,14 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
+const https = require("https");
+setInterval(() => {
+  https.get("https://ai-code-reviewer-sng5.onrender.com", (res) => {
+    console.log("Keep alive ping:", res.statusCode);
+  }).on("error", (err) => {
+    console.log("Ping error:", err.message);
+  });
+}, 14 * 60 * 1000);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
